@@ -16,8 +16,17 @@ public class HeaderContent extends Parent{
         PageFactory.initElements(GWD.getDriver(), this);
     }
 
-    @FindBy(id="//span[text()='Buy']")
+    @FindBy(xpath="//span[text()='Buy']")
     private WebElement buyButton;
+
+    @FindBy(css="button[data-test='price-filters-button']")
+    private WebElement priceFilterButton;
+
+    @FindBy(xpath="//button[text()='$100,000+']")
+    private WebElement option100kMin;
+
+    @FindBy(xpath="//button[text()='$600,000']")
+    private WebElement price600kMax;
 
     WebElement myElement;
     public void findAndSend(String strElement, String value){  // 2.aşama
@@ -35,6 +44,9 @@ public class HeaderContent extends Parent{
         switch (strElement)
         {
             case "buyButton" : myElement =buyButton; break;
+            case "priceFilterButton" : myElement =priceFilterButton; break;
+            case "option100kMin" : myElement =option100kMin; break;
+            case "price600kMax" : myElement =price600kMax; break;
         }
 
         clickFunction(myElement);
